@@ -1,4 +1,4 @@
-from vacations import vacations
+from codes.challenges.vacations import vacations
 
 
 def test_vacations():
