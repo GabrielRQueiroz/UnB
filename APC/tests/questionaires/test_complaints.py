@@ -1,4 +1,4 @@
-from complaints import complaints
+from codes.questionnaires.complaints import complaints
 
 
 def test_complaints(capfd):

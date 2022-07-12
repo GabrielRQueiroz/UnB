@@ -1,4 +1,4 @@
-from triangle import area
+from codes.linf.triangle import area
 
 
 def test_area():
@@ -7,4 +7,3 @@ def test_area():
     assert circle_area == "9.870"
     assert square_area == "2.000"
     assert rect_area == "3.000"
-

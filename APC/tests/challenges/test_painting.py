@@ -1,4 +1,4 @@
-from painting import paint_price, round_up
+from codes.challenges.painting import paint_price, round_up
 
 
 def test_paint_price():
