@@ -1,4 +1,4 @@
-from temperature import converter
+from codes.linf.temperature import converter
 
 
 def test_converter():
