@@ -1,19 +1,13 @@
-def even_sum(number, total = 0):
+def even_sum(number, total=0):
     if number == 0:
-        print(total)
-        return
-    
+        return total
+
     if number < 0:
-        print(-1)
-        return
-        
+        return -1
+
     if number % 2 != 0:
         number -= 1
-        
-    total += number
-        
-    return even_sum(number-2, total)
 
-number = int(input())-2
+    total += number - 2
 
-even_sum(number)
+    return even_sum(number - 2, total)

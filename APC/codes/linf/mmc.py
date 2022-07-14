@@ -1,9 +1,7 @@
-numbers = input().split(" ")
-numbers[0] = int(numbers[0])
-numbers[1] = int(numbers[1])
-numbers.sort()
-
-def mmc(num_a, num_b):
+def mmc(numbers):
+    numbers.sort()
+    num_a, num_b = numbers
+    
     if num_a < 0 or num_b < 0:
         return
     
@@ -14,5 +12,3 @@ def mmc(num_a, num_b):
         return num_b
     
     return num_a*num_b / (num_b%num_a)
-    
-print(mmc(numbers[0], numbers[1]))
