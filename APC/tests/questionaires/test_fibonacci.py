@@ -1,4 +1,4 @@
-from fibonacci import fibonacci
+from codes.questionnaires.fibonacci import fibonacci
 
 
 def test_fibonacci():

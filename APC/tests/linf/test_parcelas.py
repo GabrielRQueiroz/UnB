@@ -1,4 +1,4 @@
-from parcelas import f_price
+from codes.linf.parcelas import f_price
 
 
 def test_parcelas():

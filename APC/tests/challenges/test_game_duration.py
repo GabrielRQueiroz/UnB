@@ -1,4 +1,4 @@
-from game_duration import game_duration
+from codes.challenges.game_duration import game_duration
 
 
 def test_game_duration():

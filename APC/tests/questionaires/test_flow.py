@@ -1,4 +1,4 @@
-from flow import flow
+from codes.questionnaires.flow import flow
 
 
 def test_flow():
