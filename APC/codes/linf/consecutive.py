@@ -1,17 +1,19 @@
-reps = int(input("Quantas vezes repetir?\n> "))
-
-
-def consecutive_and_sum(reps):
+def consecutive_and_sum(reps, num_a, num_b):
     for rep in range(reps):
-        num_a, num_b = map(int, input("Valores:\n> ").split(" "))
+        sequence = []
         total = 0
 
         for consecutive in range(num_b):
-            print(num_a, end=" ")
+            sequence.append(num_a)
             total += num_a
             num_a += 1
 
-        print(f"\n{total}")
-
-
-consecutive_and_sum(reps)
+        return f"{' '.join(str(num) for num in sequence)}\n{total}"
+    
+# In:
+# 1
+# 1 3
+#
+# Out:
+# > 1 2 3
+# > 6
