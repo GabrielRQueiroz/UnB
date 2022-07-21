@@ -1,0 +1,17 @@
+{
+	"name": "experimental-calculator",
+	"version": "1.0.0",
+	"description": "A complex calculator for complex experimental and laboratorial stuff",
+	"main": "index.ts",
+	"license": "MIT",
+	"dependencies": {
+		"prompts": "^2.4.2"
+	},
+	"scripts": {
+		"start": "tsc index.ts && node index.js"
+	},
+	"devDependencies": {
+		"@types/node": "^18.0.6",
+		"@types/prompts": "^2.0.14"
+	}
+}
