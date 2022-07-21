@@ -1,0 +1,35 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn add prompts
+
+PATH: 
+  /home/coffee/anaconda3/condabin:/home/coffee/.cache/activestate/bin:/home/coffee/.local/ActiveState/StateTool/release/bin:/home/coffee/.sdkman/candidates/kotlin/current/bin:/home/coffee/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/coffee/bin:/usr/lib/jvm/jdk17/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.6.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/prompts: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:141550:19)
+      at listOnTimeout (node:internal/timers:564:17)
+      at process.processTimers (node:internal/timers:507:7)
+
+npm manifest: 
+  {
+    "name": "experimental-calculator",
+    "version": "1.0.0",
+    "description": "A complex calculator for complex experimental and laboratorial stuff",
+    "main": "index.ts",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
