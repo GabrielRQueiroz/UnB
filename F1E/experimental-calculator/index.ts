@@ -8,11 +8,12 @@ const questions: Array<PromptObject> = [
 		name: 'values',
 		message: 'Enter the values to be used in the calculation',
 		format: (value: string[]) => value.map((value: string) => parseFloat(value)),
-		validate: (value: string[]) => {
-			if (value.length > 0) {
-				if (value.every((value: string) => !isNaN(parseFloat(value)))) {
+		validate: (value: string) => {
+			if (value.split(',').length > 0) {
+				if (value.split(',').every((value: string) => !isNaN(parseFloat(value)))) {
 					return true;
 				}
+
 				return 'All values must be numbers';
 			} else {
 				return 'You must enter at least one value';
