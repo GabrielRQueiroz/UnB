@@ -8,7 +8,8 @@
 		"prompts": "^2.4.2"
 	},
 	"scripts": {
-		"start": "ts-node index.ts "
+		"start": "ts-node index.ts ",
+		"build": "tsc index.ts"
 	},
 	"devDependencies": {
 		"@types/node": "^18.0.6",
