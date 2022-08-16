@@ -4,13 +4,24 @@ import StandardDeviation from './funcs/stdev';
 
 const questions: Array<PromptObject> = [
 	{
+		type: 'select',
+		name: 'separator',
+		message: 'Which separator would you like to consider for the list?',
+		choices: [
+			{ title: '(,)', description: 'Comma', value: ',' },
+			{ title: '(/)', description: 'Forward slash', value: '/' },
+			{ title: '( )', description: 'Whitespace', value: ' ' },
+		],
+	},
+	{
 		type: 'list',
 		name: 'values',
 		message: 'Enter the values to be used in the calculation',
+		separator: (prev) => prev,
 		format: (value: string[]) => value.map((value: string) => parseFloat(value)),
 		validate: (value: string) => {
-			if (value.split(',').length > 0) {
-				if (value.split(',').every((value: string) => !isNaN(parseFloat(value)))) {
+			if (value.split(' ').length > 0) {
+				if (value.split(' ').every((value: string) => !isNaN(parseFloat(value)))) {
 					return true;
 				}
 
