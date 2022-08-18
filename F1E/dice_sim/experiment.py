@@ -8,17 +8,7 @@ from main import Dice, launch_experiment
 
 d6 = Dice(6)
 
-output = pd.DataFrame()
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-output = output.append(launch_experiment(d6, 100, 1), ignore_index=True)
-
-
-output.to_excel("dice_exp.xlsx", sheet_name="rolls")
+pd.concat(
+    [pd.DataFrame([launch_experiment(d6, 100, 1)], columns=f"Jogada {i+1}") for i in range(10)],
+    ignore_index=True,
+).transpose().to_excel("launch_experiment.xlsx")
