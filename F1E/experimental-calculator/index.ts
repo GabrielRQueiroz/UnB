@@ -53,19 +53,40 @@ const questions: Array<PromptObject> = [
 			if (value == false) {
 				process.exit();
 			}
-		},
+
+			return 'All values must be numbers';
+		} else {
+			return 'You must enter at least one value';
+		}
 	},
-	{
-		type: 'multiselect',
-		name: 'functions',
-		message: 'Select the functions to be used in the calculation',
-		choices: [
-			{ title: 'Mean', value: 'mean' },
-			{ title: 'Standard Deviation', value: 'stdev' },
-		],
-		min: 1,
+};
+
+const confirmValues: PromptObject = {
+	type: 'toggle',
+	name: 'shouldProceed',
+	message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
+	initial: true,
+	active: 'Ok',
+	inactive: 'Cancel',
+	onState: ({ value }) => {
+		if (value === false) {
+			process.exit();
+		}
 	},
-];
+};
+
+const selectFunctions: PromptObject = {
+	type: 'multiselect',
+	name: 'functions',
+	message: 'Select the functions to be used in the calculation',
+	choices: [
+		{ title: 'Mean', value: 'mean' },
+		{ title: 'Standard Deviation', value: 'stdev' },
+	],
+	min: 1,
+};
+
+const questions: Array<PromptObject> = [askValues, confirmValues, selectFunctions];
 
 const onSubmit = (answers: Answers<string>) => {
 	const { values, functions } = answers;
@@ -89,4 +110,6 @@ const onSubmit = (answers: Answers<string>) => {
 	});
 };
 
-(async () => await prompts(questions).then((response) => onSubmit(response)))();
+const main = async () => await prompts(questions).then((response) => onSubmit(response));
+
+main();
