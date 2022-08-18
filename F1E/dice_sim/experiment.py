@@ -9,6 +9,6 @@ from main import Dice, launch_experiment
 d6 = Dice(6)
 
 pd.concat(
-    [pd.DataFrame([launch_experiment(d6, 100, 1)], columns=f"Jogada {i+1}") for i in range(10)],
+    [pd.DataFrame([launch_experiment(d6, 100, 1)]) for i in range(10)],
     ignore_index=True,
 ).transpose().to_excel("launch_experiment.xlsx")
