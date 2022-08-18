@@ -11,4 +11,4 @@ d6 = Dice(6)
 pd.concat(
     [pd.DataFrame([launch_experiment(d6, 100, 1)]) for i in range(10)],
     ignore_index=True,
-).transpose().to_excel("launch_experiment.xlsx")
+).transpose().to_excel("./results/launch_experiment.xlsx")
