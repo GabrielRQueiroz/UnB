@@ -2,5 +2,6 @@
 	"python.testing.pytestArgs": ["tests/", "-v"],
 	"python.testing.unittestEnabled": false,
 	"python.testing.pytestEnabled": true,
-	"cSpell.words": ["celsius", "fibofat"]
+	"cSpell.words": ["celsius", "fibofat"],
+	"cSpell.ignoreWords": ["Abacatilson", "Umbreon"]
 }

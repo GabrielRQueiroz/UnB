@@ -2,15 +2,56 @@ import prompts, { Answers, PromptObject } from 'prompts';
 import Mean from './funcs/mean';
 import StandardDeviation from './funcs/stdev';
 
-const askValues: PromptObject = {
-	type: 'list',
-	name: 'values',
-	message: 'Enter the values to be used in the calculation',
-	format: (value: string[]) => value.map((value: string) => parseFloat(value)),
-	validate: (value: string) => {
-		if (value.split(',').length > 0) {
-			if (value.split(',').every((value: string) => !isNaN(parseFloat(value)))) {
-				return true;
+const questions: Array<PromptObject> = [
+	{
+		type: 'select',
+		name: 'separator',
+		message: 'Which separator would you like to consider for the list?',
+		choices: [
+			{ title: '(,)', description: 'Comma', value: ',' },
+			{ title: '(/)', description: 'Forward slash', value: '/' },
+			{ title: '( )', description: 'Whitespace', value: ' ' },
+		],
+	},
+	{
+		type: 'list',
+		name: 'values',
+		message: 'Enter the values to be used in the calculation',
+		separator: (prev) => prev,
+		format: (value: string[]) => value.map((value: string) => parseFloat(value)),
+		validate: (value: string) => {
+			if (value.split(' ').length > 0) {
+				if (value.split(' ').every((value: string) => !isNaN(parseFloat(value)))) {
+					return true;
+				}
+
+				return 'All values must be numbers';
+			} else {
+				return 'You must enter at least one value';
+			}
+		},
+	},
+	// {
+	// 	type: 'confirm',
+	// 	name: 'shouldProceed',
+	// 	message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
+	// 	initial: true,
+	// 	onState: ({ value }) => {
+	// 		if (value == false) {
+	// 			process.exit();
+	// 		}
+	// 	},
+	// },
+	{
+		type: 'toggle',
+		name: 'shouldProceed',
+		message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
+		initial: true,
+		active: 'Ok',
+		inactive: 'Cancel',
+		onState: ({ value }) => {
+			if (value == false) {
+				process.exit();
 			}
 
 			return 'All values must be numbers';
