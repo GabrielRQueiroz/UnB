@@ -61,3 +61,23 @@ def test_falling_circle():
         ["O O . X"],
         ["X X X X"],
     ]
+
+    #### CASE 5
+
+    pattern = [
+        ["O O . O"],
+        ["O . . ."],
+        [". O . ."],
+        ["O . . ."],
+        [". . . X"],
+        ["X X X ."],
+    ]
+
+    assert falling_circle(pattern) == [
+        [". . . ."],
+        [". . . ."],
+        ["O . . ."],
+        ["O O . O"],
+        ["O O . X"],
+        ["X X X ."],
+    ]
