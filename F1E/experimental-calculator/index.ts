@@ -2,59 +2,50 @@ import prompts, { Answers, PromptObject } from 'prompts';
 import Mean from './funcs/mean';
 import StandardDeviation from './funcs/stdev';
 
-const questions: Array<PromptObject> = [
-	{
-		type: 'list',
-		name: 'values',
-		message: 'Enter the values to be used in the calculation',
-		format: (value: string[]) => value.map((value: string) => parseFloat(value)),
-		validate: (value: string) => {
-			if (value.split(',').length > 0) {
-				if (value.split(',').every((value: string) => !isNaN(parseFloat(value)))) {
-					return true;
-				}
+const askValues: PromptObject = {
+	type: 'list',
+	name: 'values',
+	message: 'Enter the values to be used in the calculation',
+	format: (value: string[]) => value.map((value: string) => parseFloat(value)),
+	validate: (value: string) => {
+		if (value.split(',').length > 0) {
+			if (value.split(',').every((value: string) => !isNaN(parseFloat(value)))) {
+				return true;
+			}
 
-				return 'All values must be numbers';
-			} else {
-				return 'You must enter at least one value';
-			}
-		},
+			return 'All values must be numbers';
+		} else {
+			return 'You must enter at least one value';
+		}
 	},
-	// {
-	// 	type: 'confirm',
-	// 	name: 'shouldProceed',
-	// 	message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
-	// 	initial: true,
-	// 	onState: ({ value }) => {
-	// 		if (value == false) {
-	// 			process.exit();
-	// 		}
-	// 	},
-	// },
-	{
-		type: 'toggle',
-		name: 'shouldProceed',
-		message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
-		initial: true,
-		active: 'Ok',
-		inactive: 'Cancel',
-		onState: ({ value }) => {
-			if (value == false) {
-				process.exit();
-			}
-		},
+};
+
+const confirmValues: PromptObject = {
+	type: 'toggle',
+	name: 'shouldProceed',
+	message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
+	initial: true,
+	active: 'Ok',
+	inactive: 'Cancel',
+	onState: ({ value }) => {
+		if (value === false) {
+			process.exit();
+		}
 	},
-	{
-		type: 'multiselect',
-		name: 'functions',
-		message: 'Select the functions to be used in the calculation',
-		choices: [
-			{ title: 'Mean', value: 'mean' },
-			{ title: 'Standard Deviation', value: 'stdev' },
-		],
-		min: 1,
-	},
-];
+};
+
+const selectFunctions: PromptObject = {
+	type: 'multiselect',
+	name: 'functions',
+	message: 'Select the functions to be used in the calculation',
+	choices: [
+		{ title: 'Mean', value: 'mean' },
+		{ title: 'Standard Deviation', value: 'stdev' },
+	],
+	min: 1,
+};
+
+const questions: Array<PromptObject> = [askValues, confirmValues, selectFunctions];
 
 const onSubmit = (answers: Answers<string>) => {
 	const { values, functions } = answers;
@@ -78,4 +69,6 @@ const onSubmit = (answers: Answers<string>) => {
 	});
 };
 
-(async () => await prompts(questions).then((response) => onSubmit(response)))();
+const main = async () => await prompts(questions).then((response) => onSubmit(response));
+
+main();
