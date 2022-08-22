@@ -34,7 +34,7 @@ def roll_count(dice: Dice, rolls: int, number: int or str = "all") -> int or dic
 
 
 def launch_experiment(dice: Dice = Dice(6), rolls: int = 10, number: int = 1) -> dict:
-    """Launches n dices and excludes all with the specifiec number facing up. Repeates it until there are less than 6 dices left."""
+    """Launches n dices and excludes all with the specified number facing up. Repeats it until there are less than 6 dices left."""
     gen = 1
     gens = {0: int(rolls)}
 
