@@ -2,7 +2,7 @@ import prompts, { Answers, PromptObject } from 'prompts';
 import Mean from './funcs/mean';
 import StandardDeviation from './funcs/stdev';
 
-const questions: Array<PromptObject> = [
+const askValues: Array<PromptObject> = [
 	{
 		type: 'select',
 		name: 'separator',
@@ -53,13 +53,9 @@ const questions: Array<PromptObject> = [
 			if (value == false) {
 				process.exit();
 			}
-
-			return 'All values must be numbers';
-		} else {
-			return 'You must enter at least one value';
-		}
+		},
 	},
-};
+];
 
 const confirmValues: PromptObject = {
 	type: 'toggle',
@@ -86,7 +82,7 @@ const selectFunctions: PromptObject = {
 	min: 1,
 };
 
-const questions: Array<PromptObject> = [askValues, confirmValues, selectFunctions];
+const questions: Array<PromptObject> = [...askValues, confirmValues, selectFunctions];
 
 const onSubmit = (answers: Answers<string>) => {
 	const { values, functions } = answers;
