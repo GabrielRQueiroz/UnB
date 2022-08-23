@@ -31,36 +31,13 @@ const askValues: Array<PromptObject> = [
 			}
 		},
 	},
-	// {
-	// 	type: 'confirm',
-	// 	name: 'shouldProceed',
-	// 	message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
-	// 	initial: true,
-	// 	onState: ({ value }) => {
-	// 		if (value == false) {
-	// 			process.exit();
-	// 		}
-	// 	},
-	// },
-	{
-		type: 'toggle',
-		name: 'shouldProceed',
-		message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
-		initial: true,
-		active: 'Ok',
-		inactive: 'Cancel',
-		onState: ({ value }) => {
-			if (value == false) {
-				process.exit();
-			}
-		},
-	},
 ];
 
 const confirmValues: PromptObject = {
 	type: 'toggle',
 	name: 'shouldProceed',
-	message: (prev: number[]) => `Do you want to proceed with these values:\n${prev.join(', ')}?`,
+	message: (prev: Array<number>) =>
+		`Do you want to proceed with these values:\n${prev.join(', ')}?`,
 	initial: true,
 	active: 'Ok',
 	inactive: 'Cancel',
