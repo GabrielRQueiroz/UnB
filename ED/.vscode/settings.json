@@ -1,0 +1,5 @@
+{
+	"python.testing.pytestArgs": [".", "-v", "--tb=line", "-rA"],
+	"python.testing.unittestEnabled": false,
+	"python.testing.pytestEnabled": true
+}
