@@ -1,13 +1,3 @@
-# file_path = "./engsoft.txt"
-
-# pattern = /(\d{2}\/\d{7})\s+(.+)/
-
-# matches = File.open(file_path).read.scan(pattern)
-
-# matches.each do |match|
-#   puts "#{match[0]}  #{match[1]}"
-# end
-
 module IParser
    def initialize (file_path)
       @file_path = file_path
