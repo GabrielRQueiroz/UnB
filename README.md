@@ -1,3 +1,3 @@
 # UnB
 
-A mono repository for High School projects and lessons.
+A mono repository for College projects and lessons.
